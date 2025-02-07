@@ -39,7 +39,7 @@ locals {
     stocks_app_architecture = "arch1" # <===== either arch1 or arch2
 
     cluster_name   = "${local.name}-eks-${local.environment}"
-    version        = "1.31"
+    version        = "1.32"
     instance_types = ["t3.small"]
     credit_specification = {
       cpu_credits = "standard"
