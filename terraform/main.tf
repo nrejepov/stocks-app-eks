@@ -162,7 +162,7 @@ module "eks" {
 
   eks_managed_node_groups = {
     default = {
-      use_custom_launch_template = false
+      use_custom_launch_template = true
       create_iam_role            = true
 
       instance_types = local.k8s.instance_types
@@ -173,6 +173,13 @@ module "eks" {
       min_size     = local.k8s.min_size
       max_size     = local.k8s.max_size
       desired_size = local.k8s.desired_size
+
+      metadata_options = {
+        http_endpoint               = "enabled"
+        http_tokens                 = "optional"
+        http_put_response_hop_limit = 1
+        instance_metadata_tags      = "enabled"
+      }
     }
   }
 
